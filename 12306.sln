@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12306", "12306\12306.csproj", "{C3B5E0C5-9018-4A9B-8E38-A6190067FFD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12306API", "12306API\12306API.csproj", "{2AA80AAE-CE1D-48D5-87E6-8A41F8F9F221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12306Common", "12306Common\12306Common.csproj", "{A0FFC51C-F2E5-4F99-9B6B-93813ED34E74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3B5E0C5-9018-4A9B-8E38-A6190067FFD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B5E0C5-9018-4A9B-8E38-A6190067FFD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B5E0C5-9018-4A9B-8E38-A6190067FFD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B5E0C5-9018-4A9B-8E38-A6190067FFD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA80AAE-CE1D-48D5-87E6-8A41F8F9F221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA80AAE-CE1D-48D5-87E6-8A41F8F9F221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA80AAE-CE1D-48D5-87E6-8A41F8F9F221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA80AAE-CE1D-48D5-87E6-8A41F8F9F221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0FFC51C-F2E5-4F99-9B6B-93813ED34E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0FFC51C-F2E5-4F99-9B6B-93813ED34E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0FFC51C-F2E5-4F99-9B6B-93813ED34E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0FFC51C-F2E5-4F99-9B6B-93813ED34E74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

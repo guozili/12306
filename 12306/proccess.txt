@@ -1,0 +1,120 @@
+﻿https://kyfw.12306.cn/otn/confirmPassenger/autoSubmitOrderRequest
+secretStr	/f+NjtUUPBt0s1bAUdoEweEkamp1FoxnKAEp78vwseVtGuhYxdKmtiqY2R9h/2TG3xjwPQXpBiBc
+WtE3/l5k2464i0LGj56tn62YU4taayVdccifcZalHQVt2DuTpShf0ZifEXEvEsNU4LP346FSLBrV
+DYHN9bkgT/mjetL32kOV1TivuTqnc6Z53KAsvuOK4HQ8N5ZrkmdcV9+TKo1cCIGpjnlN6H+VPouv
+RfRy8wEarryNDM8iHE/p6dpRc9bGYSKlc98AkbNQUS/217nydZ5/u3JCY4SnM24J7qRTIj4VR+/Z
+2LXXJ8BzeDfdRr2DQ3NXZQ==
+train_date	2017-01-10
+tour_flag	dc
+purpose_codes	ADULT
+query_from_station_name	åäº¬
+query_to_station_name	æ¡æå
+cancel_flag	2
+bed_level_order_num	000000000000000000000000000000
+passengerTicketStr	4,0,1,å®åæ,1,230306198402255916,15201010958,N
+oldPassengerStr	å®åæ,1,230306198402255916,1_
+
+{
+    "validateMessagesShowId": "_validatorMessage",
+    "status": true,
+    "httpstatus": 200,
+    "data": {
+        "result": "P4#FBA5F84609B28A8E9B5C0B0411223D86BCD6FD86BF0B02D3ED0395AF#nkXsaTBQLXRskkNJPPY2c%2FJctLN8sWWL2nhZtnGRM8pPbL%2FRLL5UBMKc9Lg%3D#1",
+        "ifShowPassCode": "N",
+        "canChooseBeds": "N",
+        "canChooseSeats": "N",
+        "choose_Seats": "MOP9",
+        "isCanChooseMid": "N",
+        "ifShowPassCodeTime": "1833",
+        "submitStatus": true,
+        "smokeStr": ""
+    },
+    "messages": [],
+    "validateMessages": {}
+}
+
+
+https://kyfw.12306.cn/otn/confirmPassenger/getQueueCountAsync
+train_date	Tue Jan 10 2017 12:07:50 GMT+0800
+train_no	240000Z28507
+stationTrainCode	Z285
+seatType	4
+fromStationTelecode	BXP
+toStationTelecode	GBZ
+leftTicket	nkXsaTBQLXRskkNJPPY2c%2FJctLN8sWWL2nhZtnGRM8pPbL%2FRLL5UBMKc9Lg%3D
+purpose_codes	ADULT
+_json_att	
+
+{
+    "validateMessagesShowId": "_validatorMessage",
+    "status": true,
+    "httpstatus": 200,
+    "data": {
+        "count": "0",
+        "ticket": "30",
+        "op_2": "false",
+        "countT": "0",
+        "op_1": "false"
+    },
+    "messages": [],
+    "validateMessages": {}
+}
+
+https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueueAsys
+passengerTicketStr	4,0,1,å®åæ,1,230306198402255916,15201010958,N
+oldPassengerStr	å®åæ,1,230306198402255916,1_
+randCode	
+purpose_codes	ADULT
+key_check_isChange	FBA5F84609B28A8E9B5C0B0411223D86BCD6FD86BF0B02D3ED0395AF
+leftTicketStr	nkXsaTBQLXRskkNJPPY2c%2FJctLN8sWWL2nhZtnGRM8pPbL%2FRLL5UBMKc9Lg%3D
+train_location	P4
+choose_seats	
+seatDetailType	
+_json_att	
+
+{
+    "validateMessagesShowId": "_validatorMessage",
+    "status": true,
+    "httpstatus": 200,
+    "data": {
+        "submitStatus": true
+    },
+    "messages": [],
+    "validateMessages": {}
+}
+
+https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?random=1481602072880&tourFlag=dc&_json_att=
+{
+    "validateMessagesShowId": "_validatorMessage",
+    "status": true,
+    "httpstatus": 200,
+    "data": {
+        "queryOrderWaitTimeStatus": true,
+        "count": 0,
+        "waitTime": -1,
+        "requestId": 6214289500780826000,
+        "waitCount": 0,
+        "tourFlag": "dc",
+        "orderId": "EC87460397"
+    },
+    "messages": [],
+    "validateMessages": {}
+}
+
+
+
+
+
+secretStr=RZFn2l372aTbgyaH5MBmMuO5XDtxkU66vaiG1dnooa7A%2F2gz34NXbgKltYFOwJutx6OabatScuhW%0AYWrbiOi8Jia%2Bu4RdmxPBMgoA4upzfF947Onm7UqrRBsd%2FDQaU8%2Bmg6UG8Z2xQe82E%2BUdQCHmR2LM%0Ant1SYpl4nyGUmIPMGtR6kKCVZ0lAvEapi6S1%2BaO0xGcE81p9J31VBp1pKfkHn6O9MSy%2FdSZaORjr%0AYy%2FCx6zSK6dLJmK9it%2FGiw8XA704pHGSKB4K3dajKAnY2KGL6lGOZu0xm4JZWFru2Q%3D%3D&train_date=2017-01-02&tour_flag=dc&purpose_codes=ADULT&query_from_station_name=北京&query_to_station_name=桂林&&cancel_flag=2&bed_level_order_num=000000000000000000000000000000&passengerTicketStr=3,0,1,肖毅,1,430421198110110033,13911053443,N&oldPassengerStr=肖毅,1,430421198110110033,1_
+{"validateMessagesShowId":"_validatorMessage","status":true,"httpstatus":200,"data":{"result":"P4#98F0AA7D66D63D38D62B7B302A60BD0A6C5CADFF125260A1F15A585A#U%2BE0P%2B5xpT54bRo%2FWVCtd7sOybGCHSv5#1","ifShowPassCode":"N","canChooseBeds":"N","canChooseSeats":"N","choose_Seats":"MOP9","isCanChooseMid":"N","ifShowPassCodeTime":"1923","submitStatus":true,"smokeStr":""},"messages":[],"validateMessages":{}}
+
+train_date=Mon+Jan+02+2017+10%3A47%3A49+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&train_no=24000000Z506&stationTrainCode=Z5&seatType=3&fromStationTelecode=BXP&toStationTelecode=GLZ&leftTicket=U%252BE0P%252B5xpT54bRo%252FWVCtd7sOybGCHSv5&purpose_codes=ADULT&_json_att=
+
+passengerTicketStr=3%2C0%2C1%2C%E8%82%96%E6%AF%85%2C1%2C430421198110110033%2C13911053443%2CN&oldPassengerStr=%E8%82%96%E6%AF%85%2C1%2C430421198110110033%2C1_&randCode=&purpose_codes=ADULT&key_check_isChange=98F0AA7D66D63D38D62B7B302A60BD0A6C5CADFF125260A1F15A585A&leftTicketStr=U%252BE0P%252B5xpT54bRo%252FWVCtd7sOybGCHSv5&train_location=P4&choose_seats=&seatDetailType=&_json_att=
+passengerTicketStr=3%2C0%2C1%2C%E8%82%96%E6%AF%85%2C1%2C430421198110110033%2C13911053443%2CN&oldPassengerStr=%E8%82%96%E6%AF%85%2C1%2C430421198110110033%2C1_&randCode=&purpose_codes=ADULT&key_check_isChange=98F0AA7D66D63D38D62B7B302A60BD0A6C5CADFF125260A1F15A585A&leftTicketStr=U%252BE0P%252B5xpT54bRo%252FWVCtd7sOybGCHSv5&train_location=P4&choose_seats=&seatDetailType=&_json_att=
+passengerTicketStr=3%2C0%2C1%2C%E8%82%96%E6%AF%85%2C1%2C430421198110110033%2C%2CN&oldPassengerStr=%E8%82%96%E6%AF%85%2C1%2C430421198110110033%2C1_&randCode=&purpose_codes=ADULT&key_check_isChange=700B4FA0E8927E923DAC6B4F850BAC478B31CF415BC89542579B71CB&leftTicketStr=hv6kgW6DbpOm8QyPxoZWTvEwJXeSMjCt&train_location=P4&choose_seats=&seatDetailType=&_json_att=
+
+
+
+
+

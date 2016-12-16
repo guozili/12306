@@ -23,12 +23,12 @@ namespace _12306Common
 
         }
 
-        public PiaoData Run(Setting setting)
+        public PiaoData Run(Setting setting, int threadCount = 10)
         {
             this.setting = setting;
             this.ips = new ConcurrentQueue<string>(setting.Ips);
             //现在ips里有600个IP，大概10个线程有了，从ips队列里出列查询
-            for (var i = 0; i < setting.Ips.Count / 50 + 1; i++)
+            for (var i = 0; i < threadCount; i++)
             {
                 var worker = new BackgroundWorker();
                 worker.DoWork += worker_DoWork;
@@ -75,6 +75,10 @@ namespace _12306Common
                                         setting.ToCode[j]
                                         )) as HttpWebRequest;
                                 request.Host = "kyfw.12306.cn";
+                                request.Method = "GET";
+                                request.Referer = "https://kyfw.12306.cn/otn/leftTicket/init";
+                                request.Headers.Add("X-Requested-With:XMLHttpRequest");
+                                request.Headers.Add("Cache-Control", "no-cache");
                                 request.UserAgent = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255";
                                 request.Timeout = 5000;
                                 request.ServicePoint.ConnectionLimit = 10;
@@ -90,7 +94,8 @@ namespace _12306Common
                                     using (var sr = new StreamReader(response.GetResponseStream()))
                                     {
                                         PiaoData currentPiaoData = null;
-                                        var currentPiaoDatas = JsonConvert.DeserializeObject<Piao>(sr.ReadToEnd()).data;
+                                        var result = sr.ReadToEnd();
+                                        var currentPiaoDatas = JsonConvert.DeserializeObject<Piao>(result).data;
                                         foreach (var t in setting.SeatType)
                                         {
                                             if (t.Trim() == "硬卧")
@@ -126,6 +131,7 @@ namespace _12306Common
                                         if (currentPiaoData != null && !string.IsNullOrEmpty(currentPiaoData.secretStr))
                                         {
                                             piaoData = currentPiaoData;
+                                            piaoData.result = result;
                                             break;
                                         }
                                     }
@@ -178,6 +184,8 @@ namespace _12306Common
         public string JSESSIONID { get; set; }
         public string BIGipServerotn { get; set; }
         public string UserAgent { get; set; }
+
+        public string[] Stations { get; set; }
     }
 
     //映射/otn/leftTicket/queryX 返回的json对象
@@ -192,6 +200,7 @@ namespace _12306Common
     {
         public PiaoDTO queryLeftNewDTO { get; set; }
         public string secretStr { get; set; }
+        public string result { get; set; }
     }
 
     public class PiaoDTO

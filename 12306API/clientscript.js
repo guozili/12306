@@ -13,7 +13,7 @@ $.ajax({
             + "&tour_flag=" + 'dc'
             + "&purpose_codes=" + 'ADULT'
             + "&query_from_station_name=" + '北京西'
-            + "&query_to_station_name=" + '衡阳'
+            + "&query_to_station_name=" + '桂林'
         $.post("/otn/leftTicket/submitOrderRequest", poststr,
             function (r) {
                 console.log(r);
@@ -28,6 +28,7 @@ $.ajax({
 //发现上面的几个参数不用传，简化：
 $.ajax({
     url: "https://127.0.0.1/",
+    data: { "ReturnSecretStr": "true" },
     dataType: "jsonp",
     jsonp: "callback",
     success: function (data) {
@@ -48,7 +49,7 @@ $.ajax({
 
 
 var prepared = false;
-var names = ["肖毅", "程晶津"];
+var names = ["王倩", "刘美颖"];
 $("#seatType_1").val(3);
 setInterval(function () {
     if (!prepared) {

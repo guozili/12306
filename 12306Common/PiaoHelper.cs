@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace _12306Common
 {
@@ -23,6 +21,7 @@ namespace _12306Common
                     Console.WriteLine(DateTime.Now + " 获取站点信息 station_name.js");
                     var wc = new WebClient();
                     wc.Encoding = Encoding.UTF8;
+                    wc.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255");
                     setting.Stations = wc.DownloadString("https://kyfw.12306.cn/otn/resources/js/framework/station_name.js").Split('@');
                     break;
                 }
@@ -31,8 +30,8 @@ namespace _12306Common
                 }
             }
 
-            
 
+            setting.Ips.Clear();
             foreach (var row in File.ReadAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ips.txt")))
             {
                 if (!string.IsNullOrEmpty(row))

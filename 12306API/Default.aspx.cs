@@ -1,11 +1,7 @@
 ﻿using _12306Common;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace _12306API
 {
@@ -15,6 +11,14 @@ namespace _12306API
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString.Count == 0)
+            {
+                var startTime = DateTime.Now;
+                setting = PiaoHelper.GetSetting();
+                Response.Write(setting.From + "<br/>" + setting.To + "<br/>CDN IP数：" + setting.Ips.Count + "<br/>加载配置（秒）：" + (DateTime.Now - startTime).TotalSeconds);
+                return;
+            }
+
             if (setting == null)
             {
                 setting = PiaoHelper.GetSetting();

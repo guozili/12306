@@ -38,6 +38,7 @@ namespace _12306API
                 setting.ToCode = setting.Stations.Where(s => s.Contains(setting.To)).Select(s => s.Split('|')[2]).ToList();
             }
 
+            setting.ThreadCount = 20;
             var piaoData = PiaoHelper.GetPiaoData(setting);
 
             if (piaoData != null)

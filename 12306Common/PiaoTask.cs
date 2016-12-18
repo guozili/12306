@@ -22,12 +22,12 @@ namespace _12306Common
 
         }
 
-        public PiaoData Run(Setting setting, int threadCount = 10)
+        public PiaoData Run(Setting setting)
         {
             this.setting = setting;
             this.ips = new ConcurrentQueue<string>(setting.Ips);
             //现在ips里有600个IP，大概10个线程有了，从ips队列里出列查询
-            for (var i = 0; i < threadCount; i++)
+            for (var i = 0; i < setting.ThreadCount; i++)
             {
                 var worker = new BackgroundWorker();
                 worker.DoWork += worker_DoWork;
@@ -59,7 +59,6 @@ namespace _12306Common
                     ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
                     try
                     {
-                        Console.Write(".");
                         for (int i = 0; i < setting.FromCode.Count; i++)
                         {
                             for (int j = 0; j < setting.ToCode.Count; j++)
@@ -79,8 +78,8 @@ namespace _12306Common
                                 request.Headers.Add("X-Requested-With:XMLHttpRequest");
                                 request.Headers.Add("Cache-Control", "no-cache");
                                 request.UserAgent = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255";
-                                request.Timeout = 5000;
-                                request.ServicePoint.ConnectionLimit = 10;
+                                request.Timeout = 3000;
+                                request.ServicePoint.ConnectionLimit = setting.ThreadCount * 3;
                                 using (var response = request.GetResponse())
                                 {
                                     var h = response.Headers[3];
@@ -133,6 +132,8 @@ namespace _12306Common
                                             piaoData.result = result;
                                             break;
                                         }
+
+                                        Console.Write(".");
                                     }
                                 }
                             }
@@ -140,6 +141,7 @@ namespace _12306Common
                     }
                     catch (Exception ex)
                     {
+                        Console.Write("。");
                         //Console.WriteLine(ip + ":" + ex.Message);
                     }
                 }
@@ -160,6 +162,8 @@ namespace _12306Common
             this.FromCode = new List<string>();
             this.ToCode = new List<string>();
             this.Code = new List<string>();
+
+            this.ThreadCount = 10;
         }
 
         //所有cdnIP
@@ -185,6 +189,8 @@ namespace _12306Common
         public string UserAgent { get; set; }
 
         public string[] Stations { get; set; }
+
+        public int ThreadCount { get; set; }
     }
 
     //映射/otn/leftTicket/queryX 返回的json对象

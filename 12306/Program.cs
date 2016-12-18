@@ -70,7 +70,7 @@ namespace _12306
                         Thread.Sleep(2000);
 
                     Console.WriteLine(DateTime.Now + " 扫描票源中，请耐心等待");
-                    var piaoData = PiaoHelper.GetPiaoData(setting, i > 3 ? 1 : 10);
+                    var piaoData = PiaoHelper.GetPiaoData(setting);
 
                     if (piaoData == null)
                     {
@@ -201,11 +201,46 @@ namespace _12306
     }
 }
 
-/*GetIP
-var wc = new WebClient();
-var ipStr = wc.DownloadString("http://www.fishlee.net/apps/cn12306/ipservice/getlist");
-foreach (Match m in Regex.Matches(ipStr, @"""ip"":""(.*?)"""))
-{
-    ips.Add(m.Groups[1].Value);
-}
-*/
+//var ipss = string.Empty;
+//var wc = new WebClient();
+//var ipStr = wc.DownloadString("http://www.fishlee.net/apps/cn12306/ipservice/getlist");
+//foreach (Match m in Regex.Matches(ipStr, @"""ip"":""(.*?)"""))
+//{
+//    ips.Add(m.Groups[1].Value);
+//}
+
+//Console.WriteLine("Begin:");
+//ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+//foreach (var ip in ips)
+//{
+//    try
+//    {
+//        var dt = DateTime.Now;
+//        var request = WebRequest.Create(
+//            string.Format(
+//                "https://{0}/otn/leftTicket/queryA?leftTicketDTO.train_date={1}&leftTicketDTO.from_station={2}&leftTicketDTO.to_station={3}&purpose_codes=ADULT",
+//                "218.76.105.75",
+//                "2017-01-16",
+//                "BJP",
+//                "MDB"
+//                )) as HttpWebRequest;
+//        request.Host = "kyfw.12306.cn";
+//        request.Method = "GET";
+//        request.Referer = "https://kyfw.12306.cn/otn/leftTicket/init";
+//        request.Headers.Add("X-Requested-With:XMLHttpRequest");
+//        request.Headers.Add("Cache-Control", "no-cache");
+//        request.UserAgent = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255";
+//        request.Timeout = 5000;
+
+//        var resp = request.GetResponse() as HttpWebResponse;
+//        var s = resp.GetResponseStream();
+//        var sr = new StreamReader(s);
+//        var text = sr.ReadToEnd();
+//        JsonConvert.DeserializeObject<Piao>(text);
+//        Console.WriteLine(ip);
+//        ipss += ip + "\r\n";
+//    }
+//    catch(Exception e)
+//    {
+//    }
+//}

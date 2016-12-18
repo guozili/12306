@@ -22,7 +22,7 @@ namespace _12306Common
                     var wc = new WebClient();
                     wc.Encoding = Encoding.UTF8;
                     wc.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255");
-                    setting.Stations = wc.DownloadString("https://kyfw.12306.cn/otn/resources/js/framework/station_name.js").Split('@');
+                    setting.Stations = wc.DownloadString("https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?v=" + DateTime.Now.Millisecond).Split('@');
                     break;
                 }
                 catch
@@ -58,10 +58,10 @@ namespace _12306Common
             return setting;
         }
 
-        public static PiaoData GetPiaoData(Setting setting, int threadCount = 10)
+        public static PiaoData GetPiaoData(Setting setting)
         {
             var task = new PiaoTask();
-            var piaoData = task.Run(setting, threadCount);
+            var piaoData = task.Run(setting);
             //Console.WriteLine(piaoData);
 
             if (piaoData != null)

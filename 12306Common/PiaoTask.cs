@@ -25,6 +25,7 @@ namespace _12306Common
         public PiaoData Run(Setting setting)
         {
             this.setting = setting;
+            this.setting.TraceInfo += "," + DateTime.Now;
             this.ips = new ConcurrentQueue<string>(setting.Ips);
             //现在ips里有600个IP，大概10个线程有了，从ips队列里出列查询
             for (var i = 0; i < setting.ThreadCount; i++)
@@ -36,7 +37,7 @@ namespace _12306Common
 
             while (true)
             {
-                Thread.Sleep(300);
+                Thread.Sleep(200);
 
                 if (piaoData != null || this.ips.Count() == 0)
                     break;
@@ -51,7 +52,7 @@ namespace _12306Common
             {
                 //所有线程看到其他线程找到了secretStr，退出
                 if (piaoData != null)
-                    break;
+                    return;
 
                 var ip = string.Empty;
                 if (this.ips.TryDequeue(out ip))
@@ -63,6 +64,9 @@ namespace _12306Common
                         {
                             for (int j = 0; j < setting.ToCode.Count; j++)
                             {
+                                if (piaoData != null)
+                                    return;
+
                                 var dt = DateTime.Now;
                                 var request = WebRequest.Create(
                                     string.Format(
@@ -78,10 +82,13 @@ namespace _12306Common
                                 request.Headers.Add("X-Requested-With:XMLHttpRequest");
                                 request.Headers.Add("Cache-Control", "no-cache");
                                 request.UserAgent = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-cn; GT-S5660 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MicroMessenger/4.5.255";
-                                request.Timeout = 3000;
+                                request.Timeout = 300;
                                 request.ServicePoint.ConnectionLimit = setting.ThreadCount * 3;
                                 using (var response = request.GetResponse())
                                 {
+                                    if (piaoData != null)
+                                        return;
+
                                     var h = response.Headers[3];
                                     //Console.WriteLine(h);
                                     if ((DateTime.Now - dt).Milliseconds < 2000)
@@ -130,10 +137,12 @@ namespace _12306Common
                                         {
                                             piaoData = currentPiaoData;
                                             piaoData.result = result;
+                                            this.setting.TraceInfo += "," + DateTime.Now;
                                             break;
                                         }
 
                                         Console.Write(".");
+                                        this.setting.TraceInfo += ".";
                                     }
                                 }
                             }
@@ -142,6 +151,7 @@ namespace _12306Common
                     catch (Exception ex)
                     {
                         Console.Write("。");
+                        this.setting.TraceInfo += "。";
                         //Console.WriteLine(ip + ":" + ex.Message);
                     }
                 }
@@ -191,6 +201,8 @@ namespace _12306Common
         public string[] Stations { get; set; }
 
         public int ThreadCount { get; set; }
+
+        public string TraceInfo { get; set; }
     }
 
     //映射/otn/leftTicket/queryX 返回的json对象

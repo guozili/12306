@@ -38,12 +38,16 @@ namespace _12306API
                 setting.ToCode = setting.Stations.Where(s => s.Contains(setting.To)).Select(s => s.Split('|')[2]).ToList();
             }
 
-            setting.ThreadCount = 20;
+            if (setting.ToCode.Contains("GBZ"))
+                setting.ToCode.Add("NNZ");
+
+            setting.TraceInfo = DateTime.Now.ToString();
+            //setting.ThreadCount = 2;
             var piaoData = PiaoHelper.GetPiaoData(setting);
 
             if (piaoData != null)
             {
-                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "secretStr.txt"), piaoData.secretStr);
+                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "secretStr.txt"), piaoData.secretStr + "\r\n" + setting.TraceInfo);
             }
 
             Response.Clear();

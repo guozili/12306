@@ -39,7 +39,10 @@ namespace _12306API
             }
 
             if (setting.ToCode.Contains("GBZ"))
-                setting.ToCode.Add("NNZ");
+            {
+                setting.ToCode.Insert(1, "LZZ");
+                setting.ToCode.Insert(1, "NNZ");
+            }
 
             setting.TraceInfo = DateTime.Now.ToString();
             //setting.ThreadCount = 2;
